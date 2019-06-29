@@ -1,0 +1,14 @@
+#API接口，当收到get请求时，返回全部文章信息
+def getAllArticles(request):
+    if request.method == "GET":
+        queryset =Article.objects.all()
+        resList = []
+        for i in queryset:
+            resList += [{
+                'author': i.author.username,
+                'title': i.title,
+                'text':i.text,
+                'published_date':i.published_date,
+                'created_date':i.created_date,
+            }]
+        return JsonResponse(resList, safe=False)
