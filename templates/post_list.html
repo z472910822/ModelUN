@@ -1,0 +1,32 @@
+{% load staticfiles %}
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'css/molian.css' %}">
+    <title>技术交流协会</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a simple django blog!">
+    <title>技术交流协会</title>
+</head>
+<body>
+    <div class="page-header">
+        <div class="row">
+            <h1><a href="/">技术交流协会</a> <a href="/">委员会</a> <a href=""></a></h1>
+        </div>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="col-md-8">
+                {% for post in posts %}
+                <div>
+                    <h1><a href="">{{ post.title }}</a></h1>
+                    <p>published: {{ post.published_date }}</p>
+                    <p>{{ post.text|linebreaks }}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
