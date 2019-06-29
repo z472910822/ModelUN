@@ -1,14 +1,14 @@
 #API接口，当收到get请求时，返回全部文章信息
 def getAllArticles(request):
     if request.method == "GET":
-        queryset =Article.objects.all()
-        resList = []
-        for i in queryset:
+        queryset =Article.objects.all()#将全部文章信息存入queryset
+        resList = []#索引
+        for i in queryset:#遍历文章
             resList += [{
-                'author': i.author.username,
-                'title': i.title,
-                'text':i.text,
-                'published_date':i.published_date,
-                'created_date':i.created_date,
+                'author': i.author.username,#作者姓名
+                'title': i.title,#文章标题
+                'text':i.text,#文章内容
+                'published_date':i.published_date,#发布日期
+                'created_date':i.created_date,#创建日期
             }]
-        return JsonResponse(resList, safe=False)
+        return JsonResponse(resList, safe=False)#返回信息
